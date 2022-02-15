@@ -106,9 +106,9 @@ function login(string $email, string $password): string
 
 /* do not change any code below */
 //should greet the user with his full name (John Smith)
-echo login('john@example.be', 'pocahontas');
+echo login('john@example.be', 'pocahontas') . PHP_EOL;
 //Should say: no access
-echo login('john@example.be', 'dfgidfgdfg');
+echo login('john@example.be', 'dfgidfgdfg') . PHP_EOL;
 //Should say: no access
 echo login('wrong@example', 'wrong');
 /* You can change code again */
