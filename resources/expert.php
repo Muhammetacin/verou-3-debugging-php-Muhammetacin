@@ -11,12 +11,11 @@ echo "Exercise 1 starts here:";
 
 function new_exercise(int $x)
 {
-    $block = "<br/><hr/><br/><br/>Exercise $x starts here:<br/>";
-    echo $block;
+  $block = "<br/><hr/><br/><br/>Exercise $x starts here:<br/>";
+  echo $block;
 }
 
 // Solution: parameter was not set
-
 
 
 new_exercise(2);
@@ -33,7 +32,6 @@ echo $monday;
 // Solution: arrays are 0-indexed
 
 
-
 new_exercise(3);
 // === Exercise 3 ===
 // This should echo ` "Debugged !" `, fix it so that that is the literal text echo'ed
@@ -44,7 +42,6 @@ echo substr($str, 0, 10);
 // Solution: double quotes need to be correct, you can't use weird ones :-)
 
 
-
 new_exercise(4);
 // === Exercise 4 ===
 // Sometimes debugging code is just like looking up code and syntax...
@@ -53,7 +50,7 @@ new_exercise(4);
 // Bonus: can you fix it with changing just one character? (hard)
 
 foreach ($week as &$day) {
-    $day = substr($day, 0, -3);
+  $day = substr($day, 0, -3);
 }
 
 print_r($week);
@@ -62,19 +59,18 @@ print_r($week);
 // https://www.php.net/manual/en/control-structures.foreach.php
 
 
-
 new_exercise(5);
 // === Exercise 5 ===
 // The result should be: "Copyright © <current year> - BeCode"
-function copyright(int $year)
+function copyright(int $year): string
 {
-    return "Copyright &copy; $year - BeCode";
+  return "Copyright &copy; $year - BeCode";
 }
+
 //print the copyright
 echo copyright(intval(date('Y')));
 
 // Solution: convert date string to int, you need to echo the return value
-
 
 
 new_exercise(6);
@@ -84,7 +80,7 @@ new_exercise(6);
 
 $arr = [];
 for ($i = 97; $i < 123; $i++) {
-    array_push($arr, chr($i));
+  $arr[] = chr($i);
 }
 
 print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alphabetical array
@@ -96,18 +92,18 @@ print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alphabetical arr
 // Solution: assign ascii code of the letter and use function chr = returns a one-character string
 
 
-
 new_exercise(7);
 // === Exercise 7 ===
 // Have the result of the function say: "Welcome John Smith" or "No access"
 // Depending on the given information.
-function login(string $email, string $password)
+function login(string $email, string $password): string
 {
-    if ($email == 'john@example.be' && $password == 'pocahontas') {
-        return 'Welcome John' . ' Smith';
-    } else
-        return 'No access';
+  if ($email == 'john@example.be' && $password == 'pocahontas') {
+    return 'Welcome John' . ' Smith';
+  } else
+    return 'No access';
 }
+
 /* do not change any code below */
 //should greet the user with his full name (John Smith)
 echo login('john@example.be', 'pocahontas');
@@ -120,21 +116,21 @@ echo login('wrong@example', 'wrong');
 // Solution: change || or operation to and && operation, only have 1 return keyword, add else otherwise it gets executed anyway
 
 
-
 new_exercise(8);
 // === Exercise 8 ===
 // Check if the link is containing one of the below parts and respond with the correct message
-function isLinkValid(string $link)
+function isLinkValid(string $link): string
 {
-    $unacceptables = array('https:', '.doc', '.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
+  $unacceptables = array('https:', '.doc', '.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
 
-    foreach ($unacceptables as $unacceptable) {
-        if (strpos($link, $unacceptable) !== false) {
-            return 'Unacceptable Found<br />';
-        }
+  foreach ($unacceptables as $unacceptable) {
+    if (strpos($link, $unacceptable) !== false) {
+      return 'Unacceptable Found<br />';
     }
-    return 'Acceptable<br />';
+  }
+  return 'Acceptable<br />';
 }
+
 //invalid link
 echo isLinkValid('http://www.google.com/hack.pdf');
 //invalid link
@@ -147,7 +143,6 @@ echo isLinkValid('http://google.com/test.txt');
 // Solution: echo the return values, change == true to !== false
 
 
-
 new_exercise(9);
 // === Exercise 9 ===
 //Filter the array $areTheseFruits to only contain valid fruits
@@ -156,14 +151,13 @@ $areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car']
 $validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
 //from here on you can change the code
 for ($i = 6; $i >= 0; $i--) {
-    if (!in_array($areTheseFruits[$i], $validFruits)) {
-        unset($areTheseFruits[$i]);
-    }
+  if (!in_array($areTheseFruits[$i], $validFruits)) {
+    unset($areTheseFruits[$i]);
+  }
 }
 var_dump($areTheseFruits); //do not change this
 
 // Solution: after unsetting the range of array gets smaller and the car is never read so it can't be deleted. A workaround is to start from the end of the array.
-
 
 
 new_exercise(10);
@@ -174,30 +168,30 @@ new_exercise(10);
 // Examples: captain strange, ant widow, iron man, ...
 $arr = [];
 
-function randomHeroName()
+function randomHeroName(): string
 {
-    $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
-    $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
-    $heroes = [$hero_firstnames, $hero_lastnames];
-    $randName = $heroes[rand(0, count($heroes) - 1)][rand(0, 10)];
+  $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
+  $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
+  $heroes = [$hero_firstnames, $hero_lastnames];
+  $randName = $heroes[rand(0, count($heroes) - 1)][rand(0, 10)];
 
-    // $randFirstName = $heroes[0][rand(0, 10)];
-    // $randLastName = $heroes[1][rand(0, 10)];
-    // array_push($arr, ($randFirstName . $randLastName));
-    // echo $arr[rand(0, count($arr))];
+  // $randFirstName = $heroes[0][rand(0, 10)];
+  // $randLastName = $heroes[1][rand(0, 10)];
+  // array_push($arr, ($randFirstName . $randLastName));
+  // echo $arr[rand(0, count($arr))];
 
-    return $randName;
+  return $randName;
 }
 
-function combineNames($str1 = "", $str2 = "")
+function combineNames($str1 = "", $str2 = ""): string
 {
-    $params = [$str1, $str2];
-    foreach ($params as &$param) {
-        if ($param == "") {
-            $param = randomHeroName();
-        }
+  $params = [$str1, $str2];
+  foreach ($params as &$param) {
+    if ($param == "") {
+      $param = randomHeroName();
     }
-    return implode(" - ", $params);
+  }
+  return implode(" - ", $params);
 }
 
 echo "Here is the name: " . combineNames();
